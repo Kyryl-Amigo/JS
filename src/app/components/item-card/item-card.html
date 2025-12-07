@@ -1,0 +1,17 @@
+<div class="laptop-card">
+  <h3>{{ laptop.brand }} {{ laptop.model }}</h3>
+
+  <p class="laptop-card__cpu">Процесор: {{ laptop.cpu }}</p>
+
+  <ul class="laptop-card__specs">
+    <li>RAM: {{ laptop.ramGb }} ГБ</li>
+    <li>SSD: {{ laptop.ssdGb }} ГБ</li>
+    <li>Ціна: {{ laptop.price | number : '1.0-0' }} грн</li>
+    <li>
+      Наявність:
+      <span [class.in-stock]="laptop.inStock" [class.out-of-stock]="!laptop.inStock">
+        {{ laptop.inStock ? 'Є в наявності' : 'Немає' }}
+      </span>
+    </li>
+  </ul>
+</div>

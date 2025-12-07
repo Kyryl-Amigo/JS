@@ -1,12 +1,16 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+// src/app/app.ts
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ItemsListComponent } from './components/items-list/items-list';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [
+    CommonModule,
+    ItemsListComponent,   // <- тут ОБОВʼЯЗКОВО має бути цей компонент
+  ],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrls: ['./app.scss'],
 })
-export class App {
-  protected readonly title = signal('my-angular-project');
-}
+export class AppComponent {}
