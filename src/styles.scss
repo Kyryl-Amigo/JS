@@ -1,11 +1,16 @@
-/* Глобальні стилі */
+/* src/styles.scss */
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
+  font-family: system-ui, sans-serif;
 }
 
-* {
-  box-sizing: border-box;
+header, footer {
+  background: #3b82f6;
+  color: white;
+  text-align: center;
+  padding: 14px;
+}
+
+main {
+  padding: 20px;
 }

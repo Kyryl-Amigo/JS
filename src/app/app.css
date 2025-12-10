@@ -1,0 +1,138 @@
+/* ====== Глобальні стилі app (замість app.css) ====== */
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  background: #0f172a;
+  color: #e5e7eb;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  background: linear-gradient(90deg, #1d4ed8, #7c3aed);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.nav a {
+  margin-left: 16px;
+  text-decoration: none;
+  color: #e5e7eb;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.nav a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.app-main {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}
+
+.page-title {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.app-footer {
+  padding: 12px 24px;
+  text-align: center;
+  font-size: 0.9rem;
+  background: #020617;
+  border-top: 1px solid #1e293b;
+  color: #9ca3af;
+}
+
+/* ====== Картка товару (замість item-card.css) ====== */
+
+.card {
+  background: #020617;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+  border: 1px solid #1f2937;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-image img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.card-body {
+  padding: 16px;
+}
+
+.card-body h3 {
+  margin: 0 0 8px;
+}
+
+.price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #22c55e, #a3e635);
+  color: #022c22;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px;
+}
+
+.features li {
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+.buy-btn {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background: #2563eb;
+  color: #e5e7eb;
+  font-weight: 500;
+}
+
+.buy-btn:disabled {
+  background: #4b5563;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.out-of-stock {
+  opacity: 0.8;
+}
+
+/* ====== Список карток (замість items-list.css) ====== */
+
+.items-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}

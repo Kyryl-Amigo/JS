@@ -1,46 +1,48 @@
-// src/app/components/items-list/items-list.ts
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Laptop } from '../../shared/models/laptop.model';
+import { Item } from '../../shared/models/item.model';
+import { ItemCardComponent } from '../item-card/item-card';
 
 @Component({
-  selector: 'app-items-list',           // <-- цей селектор ми використовуємо в app.html
+  selector: 'app-items-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ItemCardComponent],
   templateUrl: './items-list.html',
-  styleUrls: ['./items-list.scss'],
+  styleUrls: ['./items-list.css'],
 })
 export class ItemsListComponent {
-  laptops: Laptop[] = [
+  items: Item[] = [
     {
       id: 1,
-      brand: 'Apple',
-      model: 'MacBook Air 13',
-      cpu: 'Apple M2',
-      ramGb: 8,
-      ssdGb: 256,
-      price: 38000,
+      title: 'Apple MacBook Air 13 M2',
+      price: 42000,
       inStock: true,
+      image: 'https://via.placeholder.com/400x250?text=MacBook+Air+M2',
+      features: ['13" Retina', 'M2', '8GB RAM', '256GB SSD'],
     },
     {
       id: 2,
-      brand: 'Asus',
-      model: 'ROG Strix G15',
-      cpu: 'AMD Ryzen 7',
-      ramGb: 16,
-      ssdGb: 512,
+      title: 'Asus ROG Strix G15',
       price: 52000,
       inStock: false,
+      image: 'https://via.placeholder.com/400x250?text=ROG+Strix+G15',
+      features: ['15.6" 144Hz', 'RTX 3060', '16GB RAM', '512GB SSD'],
     },
     {
       id: 3,
-      brand: 'Lenovo',
-      model: 'IdeaPad 3',
-      cpu: 'Intel Core i5',
-      ramGb: 16,
-      ssdGb: 512,
+      title: 'Lenovo IdeaPad 3',
       price: 30000,
       inStock: true,
+      image: 'https://via.placeholder.com/400x250?text=IdeaPad+3',
+      features: ['15.6"', 'Intel i5', '8GB RAM', '512GB SSD'],
+    },
+    {
+      id: 4,
+      title: 'HP Pavilion 14',
+      price: 33500,
+      inStock: true,
+      image: 'https://via.placeholder.com/400x250?text=HP+Pavilion+14',
+      features: ['14"', 'Ryzen 5', '16GB RAM', '512GB SSD'],
     },
   ];
 }

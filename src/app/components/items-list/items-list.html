@@ -1,19 +1,10 @@
-<h2>Список ноутбуків</h2>
+<div class="items-wrapper">
+  <h2 class="items-title">Список ноутбуків</h2>
 
-<div class="list">
-  <div class="card" *ngFor="let laptop of laptops">
-    <h3>{{ laptop.brand }} {{ laptop.model }}</h3>
-
-    <p>Процесор: {{ laptop.cpu }}</p>
-
-    <ul>
-      <li>RAM: {{ laptop.ramGb }} ГБ</li>
-      <li>SSD: {{ laptop.ssdGb }} ГБ</li>
-      <li>Ціна: {{ laptop.price }} грн</li>
-      <li>
-        Наявність:
-        <strong>{{ laptop.inStock ? 'є' : 'немає' }}</strong>
-      </li>
-    </ul>
+  <div class="items-list">
+    <app-item-card
+      *ngFor="let item of items"
+      [item]="item">
+    </app-item-card>
   </div>
 </div>

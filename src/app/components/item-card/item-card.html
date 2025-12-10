@@ -1,17 +1,21 @@
-<div class="laptop-card">
-  <h3>{{ laptop.brand }} {{ laptop.model }}</h3>
+<div class="card" [class.card-out]="!item.inStock">
+  <div class="card-image">
+    <img [src]="item.image" [alt]="item.title" />
+  </div>
 
-  <p class="laptop-card__cpu">Процесор: {{ laptop.cpu }}</p>
+  <div class="card-body">
+    <h3 class="card-title">{{ item.title }}</h3>
 
-  <ul class="laptop-card__specs">
-    <li>RAM: {{ laptop.ramGb }} ГБ</li>
-    <li>SSD: {{ laptop.ssdGb }} ГБ</li>
-    <li>Ціна: {{ laptop.price | number : '1.0-0' }} грн</li>
-    <li>
-      Наявність:
-      <span [class.in-stock]="laptop.inStock" [class.out-of-stock]="!laptop.inStock">
-        {{ laptop.inStock ? 'Є в наявності' : 'Немає' }}
-      </span>
-    </li>
-  </ul>
+    <p class="card-price">{{ item.price }} грн</p>
+
+    <ul class="card-features">
+      <li *ngFor="let f of item.features">
+        {{ f }}
+      </li>
+    </ul>
+
+    <button class="card-button" [disabled]="!item.inStock">
+      {{ item.inStock ? 'Купити' : 'Немає в наявності' }}
+    </button>
+  </div>
 </div>

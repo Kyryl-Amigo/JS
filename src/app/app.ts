@@ -6,11 +6,7 @@ import { ItemsListComponent } from './components/items-list/items-list';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    CommonModule,
-    ItemsListComponent,   // <- тут ОБОВʼЯЗКОВО має бути цей компонент
-  ],
+  imports: [CommonModule, ItemsListComponent],
   templateUrl: './app.html',
-  styleUrls: ['./app.scss'],
 })
 export class AppComponent {}

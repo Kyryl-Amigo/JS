@@ -1,0 +1,14 @@
+.items-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.items-title {
+  margin-bottom: 16px;
+}
+
+.items-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}

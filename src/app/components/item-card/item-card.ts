@@ -1,14 +1,14 @@
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Потрібно для пайпів (currency, uppercase)
-import { Laptop } from '../../shared/models/laptop.model';
+import { CommonModule } from '@angular/common';
+import { Item } from '../../shared/models/item.model';
 
 @Component({
   selector: 'app-item-card',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './item-card.html', // Ваша назва файлу
-  styleUrl: './item-card.scss'     // Ваша назва файлу
+  templateUrl: './item-card.html',
+  styleUrls: ['./item-card.css'],
 })
-export class ItemCardComponent { // Перевірте, можливо у вас просто class ItemCard
-  @Input() laptop!: Laptop; // Очікуємо об'єкт Laptop ззовні
+export class ItemCardComponent {
+  @Input() item!: Item;
 }
