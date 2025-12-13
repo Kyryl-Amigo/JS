@@ -1,19 +1,20 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
+
 import { Item } from '../../shared/models/item.model';
+import { TruncatePipe } from '../../shared/pipes/truncate.pipe';
+import { HoverHighlightDirective } from '../../shared/directives/hover-highlight.directive';
 
 @Component({
   selector: 'app-item-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink, TruncatePipe, HoverHighlightDirective],
   templateUrl: './item-card.html',
   styleUrl: './item-card.css',
 })
 export class ItemCardComponent {
-  // ✅ Лаб4: офіційний вхідний параметр
   @Input() item!: Item;
-
-  // ✅ Лаб4: подія вибору елемента
   @Output() select = new EventEmitter<Item>();
 
   get imageUrl(): string {

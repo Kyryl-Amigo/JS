@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Observable } from 'rxjs';
+
 import { Item } from '../../shared/models/item.model';
 import { ItemCardComponent } from '../item-card/item-card';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-items-list',
@@ -12,53 +15,26 @@ import { ItemCardComponent } from '../item-card/item-card';
   styleUrl: './items-list.css',
 })
 export class ItemsListComponent {
-  // ✅ Лаб4: поле пошуку
   search = '';
+  items$: Observable<Item[]>;
 
-  items: Item[] = [
-    {
-      id: 1,
-      title: 'Apple MacBook Air 13',
-      price: 38000,
-      inStock: true,
-      image: 'MacBook-air.jpg',
-      features: ['Ультрабук', 'Легкий', 'Для навчання'],
-    },
-    {
-      id: 2,
-      title: 'Asus ROG Strix G15',
-      price: 52000,
-      inStock: false,
-      image: 'asus-rog-g15.jpg',
-      features: ['Ігровий', 'Потужний', 'RGB-підсвітка'],
-    },
-    {
-      id: 3,
-      title: 'Lenovo IdeaPad 3',
-      price: 30000,
-      inStock: true,
-      image: 'lenovo-ideapad3.jpg',
-      features: ['Універсальний', 'Офіс', 'Для дому'],
-    },
-  ];
+  constructor(private dataService: DataService) {
+    this.items$ = this.dataService.getItems();
+  }
 
-  // ✅ Лаб4: фільтрація
-  get filteredItems(): Item[] {
-    const q = this.search.trim().toLowerCase();
-    if (!q) return this.items;
+  onSearchChange(value: string): void {
+    this.dataService.setSearchQuery(value);
+  }
 
-    return this.items.filter((it) => {
-      const inTitle = it.title.toLowerCase().includes(q);
-      const inFeatures = it.features.some((f) => f.toLowerCase().includes(q));
-      return inTitle || inFeatures;
-    });
+  clearSearch(): void {
+    this.search = '';
+    this.dataService.setSearchQuery('');
   }
 
   trackById(index: number, it: Item) {
     return it.id;
   }
 
-  // ✅ Лаб4: підписка на @Output і лог у консоль
   onItemSelected(it: Item): void {
     console.log('Обраний елемент:', it);
   }

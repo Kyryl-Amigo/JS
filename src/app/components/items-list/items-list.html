@@ -1,7 +1,6 @@
 <div class="wrap">
   <h2 class="title">Каталог ноутбуків</h2>
 
-  <!-- ✅ Лаб4: пошук + template variable -->
   <div class="search-row">
     <input
       #searchBox
@@ -9,22 +8,27 @@
       type="text"
       placeholder="Пошук за назвою або характеристиками..."
       [(ngModel)]="search"
+      (ngModelChange)="onSearchChange($event)"
     />
 
-    <button class="clear-btn" type="button" (click)="search=''; searchBox.focus()">
+    <button
+      class="clear-btn"
+      type="button"
+      (click)="clearSearch(); searchBox.focus()"
+    >
       Очистити
     </button>
   </div>
 
-  <div class="hint">
-    Знайдено: {{ filteredItems.length }} / {{ items.length }}
-  </div>
+  <ng-container *ngIf="items$ | async as items">
+    <div class="hint">Знайдено: {{ items.length }}</div>
 
-  <div class="items-grid">
-    <app-item-card
-      *ngFor="let it of filteredItems; trackBy: trackById"
-      [item]="it"
-      (select)="onItemSelected($event)"
-    ></app-item-card>
-  </div>
+    <div class="items-grid">
+      <app-item-card
+        *ngFor="let it of items; trackBy: trackById"
+        [item]="it"
+        (select)="onItemSelected($event)"
+      ></app-item-card>
+    </div>
+  </ng-container>
 </div>
