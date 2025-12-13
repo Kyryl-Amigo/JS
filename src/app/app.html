@@ -1,4 +1,5 @@
 <div class="app">
+  <!-- HEADER -->
   <header class="header">
     <div class="header-inner">
       <div class="logo">LaptopStore</div>
@@ -6,11 +7,15 @@
     </div>
   </header>
 
+  <!-- CONTENT -->
   <main class="main">
-    <app-items-list></app-items-list>
+    <router-outlet></router-outlet>
   </main>
 
+  <!-- FOOTER -->
   <footer class="footer">
-    <div class="footer-inner">© 2025 Кириченко К.С., ІТ-32/1</div>
+    <div class="footer-inner">
+      © 2025 Кириченко К.С., ІТ-32/1
+    </div>
   </footer>
 </div>

@@ -1,0 +1,13 @@
+<div class="details" *ngIf="item">
+  <a routerLink="/items" class="back">← Назад до каталогу</a>
+
+  <h2>{{ item.title }}</h2>
+
+  <img [src]="'/assets/laptops/' + item.image" [alt]="item.title" />
+
+  <p class="price">{{ item.price }} грн</p>
+
+  <ul>
+    <li *ngFor="let f of item.features">{{ f }}</li>
+  </ul>
+</div>

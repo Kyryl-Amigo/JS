@@ -17,7 +17,12 @@
 
     <h3>{{ item.title }}</h3>
 
-    <p class="price" [ngStyle]="{ 'font-weight': item.price >= 50000 ? '800' : '600' }">
+    <p
+      class="price"
+      [ngStyle]="{
+        'font-weight': item.price >= 50000 ? '800' : '600'
+      }"
+    >
       {{ item.price }} грн
     </p>
 
@@ -30,10 +35,13 @@
         {{ item.inStock ? 'Купити' : 'Немає в наявності' }}
       </button>
 
-      <!-- ✅ Лаб4: клік -> @Output -->
-      <button class="details-btn" type="button" (click)="onDetailsClick()">
+      <a
+        class="details-btn"
+        [routerLink]="['/items', item.id]"
+        (click)="onDetailsClick()"
+      >
         Детальніше
-      </button>
+      </a>
     </div>
   </div>
 </div>
