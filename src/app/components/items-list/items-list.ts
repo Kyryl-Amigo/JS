@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { Item } from '../../shared/models/item.model';
 import { ItemCardComponent } from '../item-card/item-card';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-items-list',
@@ -11,38 +13,22 @@ import { ItemCardComponent } from '../item-card/item-card';
   templateUrl: './items-list.html',
   styleUrl: './items-list.css',
 })
-export class ItemsListComponent {
-  // ✅ Лаб4: поле пошуку
+export class ItemsListComponent implements OnInit {
+  // ✅ Лаб4: пошук (лишили)
   search = '';
 
-  items: Item[] = [
-    {
-      id: 1,
-      title: 'Apple MacBook Air 13',
-      price: 38000,
-      inStock: true,
-      image: 'MacBook-air.jpg',
-      features: ['Ультрабук', 'Легкий', 'Для навчання'],
-    },
-    {
-      id: 2,
-      title: 'Asus ROG Strix G15',
-      price: 52000,
-      inStock: false,
-      image: 'asus-rog-g15.jpg',
-      features: ['Ігровий', 'Потужний', 'RGB-підсвітка'],
-    },
-    {
-      id: 3,
-      title: 'Lenovo IdeaPad 3',
-      price: 30000,
-      inStock: true,
-      image: 'lenovo-ideapad3.jpg',
-      features: ['Універсальний', 'Офіс', 'Для дому'],
-    },
-  ];
+  // ✅ Лаб5: тепер items НЕ містить mock тут — він буде приходити з сервісу
+  items: Item[] = [];
 
-  // ✅ Лаб4: фільтрація
+  // ✅ Лаб5: інжектимо сервіс в конструктор
+  constructor(private dataService: DataService) {}
+
+  // ✅ Лаб5: у ngOnInit тягнемо дані з сервісу
+  ngOnInit(): void {
+    this.items = this.dataService.getItems();
+  }
+
+  // ✅ Лаб4: фільтрація працює як і раніше
   get filteredItems(): Item[] {
     const q = this.search.trim().toLowerCase();
     if (!q) return this.items;
@@ -58,7 +44,7 @@ export class ItemsListComponent {
     return it.id;
   }
 
-  // ✅ Лаб4: підписка на @Output і лог у консоль
+  // ✅ Лаб4: @Output select -> console.log (лишили)
   onItemSelected(it: Item): void {
     console.log('Обраний елемент:', it);
   }
