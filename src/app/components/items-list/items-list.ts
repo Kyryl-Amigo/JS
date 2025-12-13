@@ -1,16 +1,20 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { Item } from '../../shared/models/item.model';
 import { ItemCardComponent } from '../item-card/item-card';
 
 @Component({
   selector: 'app-items-list',
   standalone: true,
-  imports: [CommonModule, ItemCardComponent],
+  imports: [CommonModule, FormsModule, ItemCardComponent],
   templateUrl: './items-list.html',
   styleUrl: './items-list.css',
 })
 export class ItemsListComponent {
+  // ✅ Лаб4: поле пошуку
+  search = '';
+
   items: Item[] = [
     {
       id: 1,
@@ -38,7 +42,24 @@ export class ItemsListComponent {
     },
   ];
 
+  // ✅ Лаб4: фільтрація
+  get filteredItems(): Item[] {
+    const q = this.search.trim().toLowerCase();
+    if (!q) return this.items;
+
+    return this.items.filter((it) => {
+      const inTitle = it.title.toLowerCase().includes(q);
+      const inFeatures = it.features.some((f) => f.toLowerCase().includes(q));
+      return inTitle || inFeatures;
+    });
+  }
+
   trackById(index: number, it: Item) {
     return it.id;
+  }
+
+  // ✅ Лаб4: підписка на @Output і лог у консоль
+  onItemSelected(it: Item): void {
+    console.log('Обраний елемент:', it);
   }
 }

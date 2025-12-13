@@ -1,3 +1,18 @@
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.details-btn {
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  background: transparent;
+  color: #e8eef7;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font-weight: 700;
+}
+
 .card {
   border-radius: 16px;
   overflow: hidden;

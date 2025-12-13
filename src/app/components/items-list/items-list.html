@@ -1,10 +1,30 @@
 <div class="wrap">
   <h2 class="title">Каталог ноутбуків</h2>
 
+  <!-- ✅ Лаб4: пошук + template variable -->
+  <div class="search-row">
+    <input
+      #searchBox
+      class="search-input"
+      type="text"
+      placeholder="Пошук за назвою або характеристиками..."
+      [(ngModel)]="search"
+    />
+
+    <button class="clear-btn" type="button" (click)="search=''; searchBox.focus()">
+      Очистити
+    </button>
+  </div>
+
+  <div class="hint">
+    Знайдено: {{ filteredItems.length }} / {{ items.length }}
+  </div>
+
   <div class="items-grid">
     <app-item-card
-      *ngFor="let it of items; trackBy: trackById"
+      *ngFor="let it of filteredItems; trackBy: trackById"
       [item]="it"
+      (select)="onItemSelected($event)"
     ></app-item-card>
   </div>
 </div>

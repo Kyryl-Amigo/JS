@@ -10,7 +10,6 @@
   </div>
 
   <div class="card-body">
-    <!-- *ngIf: позначки -->
     <div class="badge-row">
       <span class="badge badge-out" *ngIf="!item.inStock">Немає</span>
       <span class="badge badge-top" *ngIf="item.inStock && item.price >= 50000">TOP</span>
@@ -18,13 +17,7 @@
 
     <h3>{{ item.title }}</h3>
 
-    <!-- ngStyle: підсвітка/вага ціни -->
-    <p
-      class="price"
-      [ngStyle]="{
-        'font-weight': item.price >= 50000 ? '800' : '600'
-      }"
-    >
+    <p class="price" [ngStyle]="{ 'font-weight': item.price >= 50000 ? '800' : '600' }">
       {{ item.price }} грн
     </p>
 
@@ -32,8 +25,15 @@
       <li *ngFor="let f of item.features">{{ f }}</li>
     </ul>
 
-    <button class="buy-btn" [disabled]="!item.inStock">
-      {{ item.inStock ? 'Купити' : 'Немає в наявності' }}
-    </button>
+    <div class="actions">
+      <button class="buy-btn" [disabled]="!item.inStock">
+        {{ item.inStock ? 'Купити' : 'Немає в наявності' }}
+      </button>
+
+      <!-- ✅ Лаб4: клік -> @Output -->
+      <button class="details-btn" type="button" (click)="onDetailsClick()">
+        Детальніше
+      </button>
+    </div>
   </div>
 </div>
