@@ -1,66 +1,90 @@
 .card {
-  width: 260px;
-  border-radius: 14px;
-  border: 1px solid #e2e8f0;
-  padding: 12px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #0f141b;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  background: #ffffff;
-  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.06);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.15);
-}
-
-.card-out {
-  opacity: 0.6;
 }
 
 .card-image img {
   width: 100%;
-  border-radius: 10px;
+  height: 220px;
   object-fit: cover;
+  display: block;
 }
 
-.card-title {
-  font-size: 1rem;
+.card-body {
+  padding: 14px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+h3 {
   margin: 0;
+  font-size: 16px;
+  line-height: 1.2;
 }
 
-.card-price {
-  font-weight: 600;
-  color: #16a34a;
-  margin: 4px 0;
+.price {
+  margin: 0;
+  font-size: 18px;
 }
 
-.card-features {
-  list-style: none;
-  padding-left: 0;
-  margin: 6px 0;
-  font-size: 0.85rem;
+.features {
+  margin: 0;
+  padding-left: 18px;
+  opacity: 0.9;
 }
 
-.card-features li::before {
-  content: "• ";
-  color: #3b82f6;
-}
-
-.card-button {
-  margin-top: 6px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  border: none;
+.buy-btn {
+  margin-top: 8px;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 12px;
   cursor: pointer;
-  background: #3b82f6;
+  background: #2b6cff;
   color: white;
-  font-size: 0.9rem;
+  font-weight: 700;
 }
 
-.card-button:disabled {
-  background: #94a3b8;
-  cursor: default;
+.buy-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.out-of-stock {
+  opacity: 0.65;
+}
+
+.is-premium {
+  border-color: rgba(255, 215, 0, 0.35);
+  box-shadow: 0 12px 35px rgba(255, 215, 0, 0.08);
+}
+
+.badge-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-weight: 800;
+}
+
+.badge-out {
+  background: rgba(255, 67, 67, 0.16);
+  color: #ff6b6b;
+  border: 1px solid rgba(255, 67, 67, 0.25);
+}
+
+.badge-top {
+  background: rgba(255, 215, 0, 0.14);
+  color: #ffd24d;
+  border: 1px solid rgba(255, 215, 0, 0.22);
 }

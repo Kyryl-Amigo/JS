@@ -1,4 +1,3 @@
-// src/app/app.ts
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ItemsListComponent } from './components/items-list/items-list';
@@ -8,5 +7,6 @@ import { ItemsListComponent } from './components/items-list/items-list';
   standalone: true,
   imports: [CommonModule, ItemsListComponent],
   templateUrl: './app.html',
+  styleUrl: './app.css',
 })
 export class AppComponent {}

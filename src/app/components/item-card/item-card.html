@@ -1,20 +1,38 @@
-<div class="card" [class.card-out]="!item.inStock">
+<div
+  class="card"
+  [ngClass]="{
+    'out-of-stock': !item.inStock,
+    'is-premium': item.inStock && item.price >= 50000
+  }"
+>
   <div class="card-image">
-    <img [src]="item.image" [alt]="item.title" />
+    <img [src]="imageUrl" [alt]="item.title" />
   </div>
 
   <div class="card-body">
-    <h3 class="card-title">{{ item.title }}</h3>
+    <!-- *ngIf: позначки -->
+    <div class="badge-row">
+      <span class="badge badge-out" *ngIf="!item.inStock">Немає</span>
+      <span class="badge badge-top" *ngIf="item.inStock && item.price >= 50000">TOP</span>
+    </div>
 
-    <p class="card-price">{{ item.price }} грн</p>
+    <h3>{{ item.title }}</h3>
 
-    <ul class="card-features">
-      <li *ngFor="let f of item.features">
-        {{ f }}
-      </li>
+    <!-- ngStyle: підсвітка/вага ціни -->
+    <p
+      class="price"
+      [ngStyle]="{
+        'font-weight': item.price >= 50000 ? '800' : '600'
+      }"
+    >
+      {{ item.price }} грн
+    </p>
+
+    <ul class="features">
+      <li *ngFor="let f of item.features">{{ f }}</li>
     </ul>
 
-    <button class="card-button" [disabled]="!item.inStock">
+    <button class="buy-btn" [disabled]="!item.inStock">
       {{ item.inStock ? 'Купити' : 'Немає в наявності' }}
     </button>
   </div>

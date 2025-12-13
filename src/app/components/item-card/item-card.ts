@@ -7,8 +7,13 @@ import { Item } from '../../shared/models/item.model';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './item-card.html',
-  styleUrls: ['./item-card.css'],
+  styleUrl: './item-card.css',
 })
 export class ItemCardComponent {
   @Input() item!: Item;
+
+  // щоб НЕ повторювати '/assets/laptops/' у html і було чисто
+  get imageUrl(): string {
+    return `/assets/laptops/${this.item?.image ?? ''}`;
+  }
 }

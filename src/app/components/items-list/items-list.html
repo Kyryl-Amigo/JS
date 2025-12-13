@@ -1,10 +1,10 @@
-<div class="items-wrapper">
-  <h2 class="items-title">Список ноутбуків</h2>
+<div class="wrap">
+  <h2 class="title">Каталог ноутбуків</h2>
 
-  <div class="items-list">
+  <div class="items-grid">
     <app-item-card
-      *ngFor="let item of items"
-      [item]="item">
-    </app-item-card>
+      *ngFor="let it of items; trackBy: trackById"
+      [item]="it"
+    ></app-item-card>
   </div>
 </div>
